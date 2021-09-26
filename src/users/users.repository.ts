@@ -27,11 +27,12 @@ export default class UsersRepository implements IUserRepository {
     return UsersMapper.ormToDomain(user);
   }
 
-  async findByEmail(email: string): Promise<UsersEntity> {
+  async findByEmail(email: string, withDeleted = false): Promise<UsersEntity> {
     const user = await this.connection.manager.findOne(UsersOrm, {
       where: {
         email,
       },
+      withDeleted,
     });
     if (user) {
       return UsersMapper.ormToDomain(user);

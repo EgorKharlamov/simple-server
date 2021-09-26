@@ -24,7 +24,8 @@ export default class CreateUserUseCase {
   }
 
   async validate(request: CreateUserRequest) {
-    if (await this.userRepository.findByEmail(request.email)) {
+    const user = await this.userRepository.findByEmail(request.email, true);
+    if (user) {
       throw new DomainValidationErrorCreator(
         DomainValidationErrorTypes.exists,
         'email',

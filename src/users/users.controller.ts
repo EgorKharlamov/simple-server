@@ -11,13 +11,7 @@ import {
   ValidationPipe,
   Delete,
 } from '@nestjs/common';
-import {
-  ApiBody,
-  ApiParam,
-  ApiProperty,
-  ApiResponse,
-  ApiTags,
-} from '@nestjs/swagger';
+import { ApiBody, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { UsersService } from './users.service';
 import CreateUserRequest from '@/users/Domain/Requests/CreateUserRequest';
 import CreateUserRequestDto from '@/users/Domain/Dto/CreateUserRequestDto';
@@ -26,7 +20,6 @@ import UsersMapper from '@/users/Domain/users.mapper';
 import { DomainValidationErrorExceptionFilter } from '@/Errors/domain-validation-error-exception.filter';
 import GetUserByIdRequest from '@/users/Domain/Requests/GetUserByIdRequest';
 import GetUserByIdRequestDto from '@/users/Domain/Dto/GetUserByIdRequestDto';
-import { ApiImplicitParam } from '@nestjs/swagger/dist/decorators/api-implicit-param.decorator';
 import GetUserByNameRequest from '@/users/Domain/Requests/GetUserByNameRequest';
 import GetUserByNameRequestDto from '@/users/Domain/Dto/GetUserByNameRequestDto';
 import EditUserRequestDto from '@/users/Domain/Dto/EditUserRequestDto';
