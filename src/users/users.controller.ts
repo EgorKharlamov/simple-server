@@ -1,4 +1,4 @@
-import { Controller, Post, Body, UseFilters } from '@nestjs/common';
+import { Controller, Post, Body, UseFilters, Get } from '@nestjs/common';
 import { ApiBody, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { UsersService } from './users.service';
 import CreateUserRequest from '@/users/Domain/Requests/CreateUserRequest';
@@ -26,5 +26,13 @@ export class UsersController {
     const useCase = this.usersService.createNewUserUseCase();
     const user = await useCase.do(request);
     return UsersMapper.domainToDto(user);
+  }
+
+  @Get('users')
+  @ApiResponse({ type: [UserDto] })
+  async getUsers() {
+    const useCase = this.usersService.getUsers();
+    const users = await useCase.do();
+    return UsersMapper.domainListToDto(users);
   }
 }

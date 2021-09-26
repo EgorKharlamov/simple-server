@@ -14,6 +14,14 @@ export default class UsersMapper {
     });
   }
 
+  static ormListToDomain(orms: UsersOrm[]): UsersEntity[] {
+    const res = [];
+    for (const orm of orms) {
+      res.push(this.ormToDomain(orm));
+    }
+    return res;
+  }
+
   static domainToDto(user: UsersEntity): UserDto {
     return {
       id: user.id,
@@ -22,5 +30,13 @@ export default class UsersMapper {
       createdAt: user.createdAt,
       deletedAt: user.deletedAt,
     };
+  }
+
+  static domainListToDto(users: UsersEntity[]): UserDto[] {
+    const res = [];
+    for (const user of users) {
+      res.push(this.domainToDto(user));
+    }
+    return res;
   }
 }

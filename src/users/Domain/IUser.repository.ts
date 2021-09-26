@@ -8,4 +8,6 @@ export interface IUserRepository {
   ): Promise<UsersEntity>;
 
   findByEmail(email: string): Promise<UsersEntity>;
+
+  getUsers(): Promise<UsersEntity[]>;
 }

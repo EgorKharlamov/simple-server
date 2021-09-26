@@ -34,4 +34,9 @@ export default class UsersRepository implements IUserRepository {
       return UsersMapper.ormToDomain(user);
     }
   }
+
+  async getUsers(): Promise<any> {
+    const users = await this.connection.manager.find(UsersOrm);
+    return UsersMapper.ormListToDomain(users);
+  }
 }
