@@ -1,7 +1,14 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsEmail, IsString, MaxLength, MinLength } from 'class-validator';
+import {
+  IsEmail,
+  IsString,
+  IsOptional,
+  MaxLength,
+  MinLength,
+} from 'class-validator';
 
-export default class CreateUserRequestDto {
+export default class EditUserRequestDto {
+  @IsOptional()
   @MaxLength(30)
   @IsEmail()
   @ApiProperty({
@@ -9,8 +16,9 @@ export default class CreateUserRequestDto {
     maxLength: 30,
     example: 'hellokitty@gmail.com',
   })
-  email: string;
+  email?: string;
 
+  @IsOptional()
   @MinLength(6)
   @MaxLength(80)
   @IsString()
@@ -19,18 +27,10 @@ export default class CreateUserRequestDto {
     maxLength: 80,
     example: 'Verystrongpassword1',
   })
-  pass: string;
+  @ApiProperty({ type: 'string', required: false })
+  pass?: string;
 
-  @MinLength(6)
-  @MaxLength(80)
-  @IsString()
-  @ApiProperty({
-    type: 'string',
-    maxLength: 80,
-    example: 'Verystrongpassword1',
-  })
-  passRepeat: string;
-
+  @IsOptional()
   @MaxLength(20)
   @IsString()
   @ApiProperty({
@@ -38,5 +38,6 @@ export default class CreateUserRequestDto {
     maxLength: 20,
     example: 'Jerry',
   })
-  name: string;
+  @ApiProperty({ type: 'string', required: false })
+  name?: string;
 }

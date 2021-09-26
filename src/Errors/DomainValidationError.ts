@@ -1,6 +1,7 @@
 export enum DomainValidationErrorTypes {
   required = 'required',
   exists = 'exists',
+  notExists = 'notExists',
   notEqual = 'notEqual',
 }
 

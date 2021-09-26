@@ -1,6 +1,8 @@
 import {
   BaseEntity,
   Column,
+  CreateDateColumn,
+  DeleteDateColumn,
   Entity,
   Index,
   PrimaryGeneratedColumn,
@@ -21,9 +23,9 @@ export default class UsersOrm extends BaseEntity {
   @Column({ type: 'varchar', length: 20, nullable: true, default: null })
   name: string | null;
 
-  @Column({ type: 'timestamp with time zone' })
+  @CreateDateColumn({ type: 'timestamp with time zone' })
   created_at: Date;
 
-  @Column({ type: 'timestamp with time zone', nullable: true, default: null })
+  @DeleteDateColumn({ type: 'timestamp with time zone' })
   deleted_at: Date | null;
 }
