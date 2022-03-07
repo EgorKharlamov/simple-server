@@ -4,3 +4,7 @@ export function nonNullable<T>(object: T): T {
   }
   return object;
 }
+
+console.log('one')
+console.log('one')
+console.log('one')
